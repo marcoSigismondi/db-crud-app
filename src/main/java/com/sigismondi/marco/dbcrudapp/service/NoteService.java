@@ -17,7 +17,8 @@ public class NoteService {
 	
 	@GetMapping("/notes")
 	public List<NoteEntity> retrieveAllStudents() {
-		return noteRepository.findAll();
+		List<NoteEntity> findAll = noteRepository.findAll();
+		return findAll;
 	}
 
 }

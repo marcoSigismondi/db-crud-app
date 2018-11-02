@@ -11,6 +11,7 @@ services:
         MYSQL_DATABASE: APPLICATION_DB
       volumes:
         - ./mysql-data:/docker-entrypoint-initdb.d
+        - persistent-data:/var/lib/mysql
     ubuntu:
       image: ubuntu-image
       container_name: ubuntu-image
@@ -30,3 +31,5 @@ services:
         - 8080:8080
       volumes:
         - ./spring-boot-app
+volumes:
+  persistent-data:

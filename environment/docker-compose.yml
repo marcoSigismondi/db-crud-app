@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+    mysql-docker-container:
+      image: mysql:5.7
+      container_name: mysql-docker-container
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_USER: admin
+        MYSQL_PASSWORD: admin
+        MYSQL_DATABASE: APPLICATION_DB
+      volumes:
+        - ./mysql-data:/docker-entrypoint-initdb.d
+    ubuntu:
+      image: ubuntu-image
+      container_name: ubuntu-image
+      build:
+        context: ./
+        dockerfile: Dockerfile_ubuntu
+      tty: true
+    spring-boot-db-crud:
+      image: spring-boot-db-crud-image
+      container_name: spring-boot-db-crud-container
+      build:
+        context: ./
+        dockerfile: Dockerfile_spring
+      depends_on:
+        - mysql-docker-container
+      ports:
+        - 8080:8080
+      volumes:
+        - ./spring-boot-app

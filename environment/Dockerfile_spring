@@ -1,0 +1,12 @@
+FROM openjdk:8-jdk-alpine
+EXPOSE 8080
+VOLUME /tmp
+RUN apk add --no-cache bash gawk sed grep bc coreutils
+RUN apk add --no-cache mysql-client && rm -rf /var/lib/apt
+
+ADD target/db-crud-app-0.0.1-SNAPSHOT.jar app.jar
+ADD target/wait-for-it.sh wait-for-it.sh
+
+# check if is fine without wait
+# ENTRYPOINT ["./wait-for-it.sh", "--timeout=15", "mysql-docker-container:3306", "--", "java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]

@@ -4,7 +4,7 @@ VOLUME /tmp
 RUN apk add --no-cache bash gawk sed grep bc coreutils
 RUN apk add --no-cache mysql-client && rm -rf /var/lib/apt
 
-ADD deployment/db-crud-app-0.0.1-SNAPSHOT.jar app.jar
-ADD deployment/wait-for-it.sh wait-for-it.sh
+ADD deployment/db-crud-app-0.0.1-SNAPSHOT.jar deployment/app.jar
+ADD deployment/wait-for-it.sh script/wait-for-it.sh
 
-ENTRYPOINT ["./wait-for-it.sh", "--timeout=15", "mysql-docker-container:3306", "--", "java","-jar","/app.jar"]
+ENTRYPOINT ["./script/wait-for-it.sh", "--timeout=15", "mysql-docker-container:3306", "--", "java","-jar","deployment/app.jar"]

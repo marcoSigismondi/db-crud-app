@@ -7,3 +7,5 @@ CREATE TABLE note (
     note varchar(200),
     PRIMARY KEY (ID)
 );
+
+insert into note (note) values ('First note');

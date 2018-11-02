@@ -1,1 +1,0 @@
-insert into note (note) values ('First note');

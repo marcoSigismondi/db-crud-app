@@ -1,0 +1,5 @@
+FROM mysql:5.7
+
+RUN apt-get update && apt-get install -y vim
+
+ADD mysql-data/00_initialize_db.sql docker-entrypoint-initdb.d/00_initialize_db.sql

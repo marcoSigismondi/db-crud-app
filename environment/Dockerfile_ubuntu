@@ -1,9 +1,3 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get install -y mysql-client && rm -rf /var/lib/apt && apt-get vim
-
-ADD mysql-data/00_initialize_db.sql script/00_initialize_db.sql
-ADD mysql-data/start-up-db.sh script/start-up-db.sh
-ADD deployment/wait-for-it.sh script/wait-for-it.sh
-
-#ENTRYPOINT ["./script/wait-for-it.sh", "--timeout=15", "mysql-docker-container:3306", "--", "./script/start-up-db.sh"]
+RUN apt-get update && apt-get install -y mysql-client && rm -rf /var/lib/apt 

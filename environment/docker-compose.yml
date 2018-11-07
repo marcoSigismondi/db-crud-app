@@ -2,19 +2,21 @@ version: '3.1'
 
 services:
     mysql-docker-container:
-      image: mysql:5.7
+      image: mysql-image
       container_name: mysql-docker-container
+      build:
+        context: ./
+        dockerfile: Dockerfile_mysql
       environment:
         MYSQL_ROOT_PASSWORD: root
         MYSQL_USER: admin
         MYSQL_PASSWORD: admin
         MYSQL_DATABASE: APPLICATION_DB
       volumes:
-        - ./mysql-data:/docker-entrypoint-initdb.d
-        - persistent-data:/var/lib/mysql
+        - .\mysql-data\persistent:/var/lib/mysql
     ubuntu:
       image: ubuntu-image
-      container_name: ubuntu-image
+      container_name: ubuntu-docker-container
       build:
         context: ./
         dockerfile: Dockerfile_ubuntu
@@ -29,7 +31,3 @@ services:
         - mysql-docker-container
       ports:
         - 8080:8080
-      volumes:
-        - ./spring-boot-app
-volumes:
-  persistent-data:

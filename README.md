@@ -26,6 +26,6 @@ To run the environment follow the step below:
 * open a browser and go to http://localhost:8080/notes
 
 Useful command to inspect what is happening
-* from a command line run docker container ls to list all docker running container with docker id
-* docker exec -it [container_id] bash to connect to a container
-* mysql -u admin -h mysql-docker-container -P 3306 -D APPLICATION_DB -p [after_requested_prompt_pass=admin] to access mysql DB from ubuntu container
+* from a command line ```run docker container ls``` to list all docker running container with docker id
+* ```docker exec -it [container_id] bash``` to connect to a container
+* ```mysql -u admin -h mysql-docker-container -P 3306 -D APPLICATION_DB -p [after_requested_prompt_pass=admin]``` to access mysql DB from ubuntu container

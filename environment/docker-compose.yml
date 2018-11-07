@@ -13,7 +13,7 @@ services:
         MYSQL_PASSWORD: admin
         MYSQL_DATABASE: APPLICATION_DB
       volumes:
-        - .\mysql-data\persistent:/var/lib/mysql
+        - ./mysql-data/persistent:/var/lib/mysql
     ubuntu:
       image: ubuntu-image
       container_name: ubuntu-docker-container
